@@ -14,9 +14,9 @@ async function startServer() {
   app.post("/user/:id", controllers.renameUser);
 
   server.applyMiddleware({ app });
-  await new Promise((resolve) => app.listen({ port: 4000 }, resolve));
-  console.log(`🚀 Server ready at http://localhost:4000${server.graphqlPath}`);
-  console.log(`🚀 REST API ready at http://localhost:4000/api`);
+  app.listen(4000, () =>
+    console.log(`🚀 Server ready at http://localhost:4000${server.graphqlPath}`)
+  );
 }
 
 startServer();

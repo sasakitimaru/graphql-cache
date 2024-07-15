@@ -37,7 +37,7 @@ const resolvers = {
   },
   Mutation: {
     renameUser: async (_, { id, name }) => {
-      const user = await getUser(id);
+      const user = users[Number(id)];
       if (!user) {
         throw new Error("User not found");
       }
