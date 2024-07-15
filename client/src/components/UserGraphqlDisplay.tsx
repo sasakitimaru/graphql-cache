@@ -1,6 +1,6 @@
 import { gql, useQuery } from "@apollo/client";
 import { useState } from "react";
-import SelectUser from "./SelectUser";
+import SelectUser from "../SelectUser";
 
 const GET_USER = gql`
   query GetUser($id: ID!) {
@@ -11,7 +11,7 @@ const GET_USER = gql`
   }
 `;
 
-function UserDisplay() {
+function UserGraphqlDisplay() {
   const [userId, setUserId] = useState("1");
   const { loading, error, data } = useQuery(GET_USER, {
     variables: { id: userId },
@@ -33,4 +33,4 @@ function UserDisplay() {
   );
 }
 
-export default UserDisplay;
+export default UserGraphqlDisplay;

@@ -11,7 +11,7 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    renameUser(id: ID!, name: String!): User!
+    renameUser(id: ID!, name: String!): User
   }
 `;
 
@@ -47,4 +47,17 @@ const resolvers = {
   },
 };
 
-module.exports = { typeDefs, resolvers };
+const controllers = {
+  getUser: async (req, res) => {
+    const { id } = req.params;
+    const user = await getUser(id);
+    res.json(user);
+  },
+  renameUser: async (req, res) => {
+    const { id, name } = req.body;
+    const user = await renameUser(null, { id, name });
+    res.json(user);
+  },
+};
+
+module.exports = { typeDefs, resolvers, controllers };

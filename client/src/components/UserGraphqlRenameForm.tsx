@@ -1,6 +1,6 @@
 import { gql, useMutation } from "@apollo/client";
 import { useState } from "react";
-import SelectUser from "./SelectUser";
+import SelectUser from "../SelectUser";
 
 const RENAME_USER = gql`
   mutation RenameUser($id: ID!, $name: String!) {
@@ -11,7 +11,7 @@ const RENAME_USER = gql`
   }
 `;
 
-function RenameUser() {
+function UserGraphqlRenameForm() {
   const [userId, setUserId] = useState("1");
   const [userName, setUserName] = useState("");
   const [renameUser, { data, loading, error }] = useMutation(RENAME_USER);
@@ -52,4 +52,4 @@ function RenameUser() {
   );
 }
 
-export default RenameUser;
+export default UserGraphqlRenameForm;
